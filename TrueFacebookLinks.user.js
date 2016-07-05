@@ -1,11 +1,11 @@
 // ==UserScript==
 // @author			An_dz
-// @version			1.0
+// @version			1.1
 // @name			TrueFacebookLink
-// @description		Removes the Facebook tracking in links
-// @date			2016 February 11
-// @include			https://*facebook.com/*
-// @include			http://*facebook.com/*
+// @description		Remove the Facebook tracking in links
+// @date			2016 June 2
+// @include			https://*.facebook.com/*
+// @include			http://*.facebook.com/*
 // @run-at			document-start
 // @grant			none
 // ==/UserScript==
