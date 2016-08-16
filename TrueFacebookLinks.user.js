@@ -1,9 +1,9 @@
 // ==UserScript==
 // @author			An_dz
-// @version			1.1
+// @version			1.2
 // @name			TrueFacebookLink
 // @description		Remove the Facebook tracking in links
-// @date			2016 June 2
+// @date			2016 August 16
 // @include			https://*.facebook.com/*
 // @include			http://*.facebook.com/*
 // @run-at			document-start
@@ -29,7 +29,7 @@ var ttl = function TrueFacebookLink(){
 				// set the href tag to the original URL as it should be.
 				links[i].href = realHref;
 			}
-			if (links[i].hasAttribute("onclick")) {
+			else if (links[i].hasAttribute("onclick")) {
 				// Extract real url from facebook's sneaky mouseover event handler.
 				var refPattern = /LinkshimAsyncLink.swap\(this\, \"(.*)\".*/;
 				if (links[i].hasAttribute("onmouseover")) {
@@ -44,6 +44,14 @@ var ttl = function TrueFacebookLink(){
 					links[i].removeAttribute("onclick");
 					links[i].removeAttribute("onmouseover");
 				}
+			}
+			else if (links[i].href.search("http://l.facebook") == 0) {
+				// Remove facebook redirection.
+				var facebookRedirectString = "http://l.facebook.com/l.php?u=";
+				var realHref = unescape(links[i].href.replace(facebookRedirectString,""));
+
+				// set the href tag to the original URL as it should be.
+				links[i].href = realHref;
 			}
 		}
 	}
