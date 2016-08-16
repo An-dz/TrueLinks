@@ -1,6 +1,6 @@
 // ==UserScript==
 // @author			An_dz
-// @version			1.0
+// @version			1.0.1
 // @name			TrueTweetLink
 // @description		Removes the Twitter tracking in tweet links
 // @date			2016 February 11
@@ -8,6 +8,7 @@
 // @include			http://*twitter.com/*
 // @run-at			document-start
 // @grant			none
+// @downloadURL		https://github.com/An-dz/TrueLinks/raw/master/TrueTweetLinks.user.js
 // ==/UserScript==
 
 var ttl = function TrueTweetLink(){
