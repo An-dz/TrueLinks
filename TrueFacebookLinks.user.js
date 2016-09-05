@@ -1,9 +1,9 @@
 // ==UserScript==
 // @author			An_dz
-// @version			1.2.1
+// @version			1.3
 // @name			TrueFacebookLink
 // @description		Remove the Facebook tracking in links
-// @date			2016 August 16
+// @date			2016 September 5
 // @include			https://*.facebook.com/*
 // @include			http://*.facebook.com/*
 // @run-at			document-start
@@ -49,7 +49,8 @@ var ttl = function TrueFacebookLink(){
 			else if (links[i].href.search("http://l.facebook") == 0) {
 				// Remove facebook redirection.
 				var facebookRedirectString = "http://l.facebook.com/l.php?u=";
-				var realHref = unescape(links[i].href.replace(facebookRedirectString,""));
+				var realHref = links[i].href.replace(facebookRedirectString,"")
+				realHref = unescape(realHref.substring(0, realHref.search("&")));
 
 				// set the href tag to the original URL as it should be.
 				links[i].href = realHref;
