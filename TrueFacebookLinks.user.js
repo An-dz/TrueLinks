@@ -1,9 +1,9 @@
 // ==UserScript==
 // @author			An_dz
-// @version			1.3
+// @version			1.4
 // @name			TrueFacebookLink
 // @description		Remove the Facebook tracking in links
-// @date			2016 September 5
+// @date			2016 September 15
 // @include			https://*.facebook.com/*
 // @include			http://*.facebook.com/*
 // @run-at			document-start
@@ -11,7 +11,7 @@
 // @downloadURL		https://github.com/An-dz/TrueLinks/raw/master/TrueFacebookLinks.user.js
 // ==/UserScript==
 
-var ttl = function TrueFacebookLink(){
+(function TrueFacebookLink(){
 	document.addEventListener('DOMNodeInserted', makeTrueLinks, false);
 
 	function makeTrueLinks(event) {
@@ -57,4 +57,4 @@ var ttl = function TrueFacebookLink(){
 			}
 		}
 	}
-}();
+})();
