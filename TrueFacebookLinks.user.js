@@ -1,14 +1,14 @@
 // ==UserScript==
-// @author			An_dz
-// @version			1.5
-// @name			TrueFacebookLink
-// @description		Remove the Facebook tracking in links
-// @date			2017 February 25
-// @include			https://*.facebook.com/*
-// @include			http://*.facebook.com/*
-// @run-at			document-start
-// @grant			none
-// @downloadURL		https://github.com/An-dz/TrueLinks/raw/master/TrueFacebookLinks.user.js
+// @author          An_dz
+// @version         1.6
+// @name            TrueFacebookLink
+// @description     Remove the Facebook tracking in links
+// @date            2017 July 11
+// @include         https://*.facebook.com/*
+// @include         http://*.facebook.com/*
+// @run-at          document-start
+// @grant           none
+// @downloadURL     https://github.com/An-dz/TrueLinks/raw/master/TrueFacebookLinks.user.js
 // ==/UserScript==
 
 (function TrueFacebookLink(){
@@ -54,8 +54,8 @@
 		}
 	}
 
-	function makeTrueLinks(event) {
-		var links = document.getElementsByTagName("a");
+	function makeTrueLinks() {
+		var links = document.querySelectorAll("a[onmousedown], a[onclick], a[href^='https://l.facebook.com'], a[href^='http://l.facebook.com']");
 		// Can't use forEach because Facebook for some reason breaks it
 		for (var i = links.length - 1; i >= 0; i--) {
 			changeLink(links[i]);
@@ -63,4 +63,4 @@
 	}
 
 	document.addEventListener("DOMNodeInserted", makeTrueLinks, false);
-})();
+}());

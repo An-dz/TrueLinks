@@ -1,31 +1,29 @@
 // ==UserScript==
-// @author			An_dz
-// @version			1.1
-// @name			TrueTweetLink
-// @description		Removes the Twitter tracking in tweet links
-// @date			2016 September 15
-// @include			https://*twitter.com/*
-// @include			http://*twitter.com/*
-// @run-at			document-start
-// @grant			none
-// @downloadURL		https://github.com/An-dz/TrueLinks/raw/master/TrueTweetLinks.user.js
+// @author          An_dz
+// @version         1.2
+// @name            TrueTweetLink
+// @description     Removes the Twitter tracking in tweet links
+// @date            2016 July 11
+// @include         https://*twitter.com/*
+// @include         http://*twitter.com/*
+// @run-at          document-start
+// @grant           none
+// @downloadURL     https://github.com/An-dz/TrueLinks/raw/master/TrueTweetLinks.user.js
 // ==/UserScript==
 
 (function TrueTweetLink(){
-	document.addEventListener('DOMNodeInserted', makeTrueLinks, false);
-
-	function makeTrueLinks(event) {
-		var links = document.getElementsByTagName('a');
+	document.addEventListener("DOMNodeInserted", function () {
+		var links = document.querySelectorAll("a[data-expanded-url], a[data-expanded-path]");
 		// change links
-		for (var i = links.length - 1; i >= 0; i--) {
+		links.forEach( function (link) {
 			// Twitter adds a data- attribute, if it exists we do the changes
-			if(links[i].hasAttribute('data-expanded-url')) {
-				links[i].href = links[i].getAttribute('data-expanded-url');
+			if(link.hasAttribute("data-expanded-url")) {
+				link.href = link.getAttribute("data-expanded-url");
 			}
 			// If using mobile.twitter pic.twitter has a different way
-			if (links[i].hasAttribute('data-expanded-path')) {
-				links[i].href = links[i].getAttribute('data-url');
+			if (link.hasAttribute("data-expanded-path")) {
+				link.href = link.getAttribute("data-url");
 			}
-		}
-	}
-})();
+		});
+	}, false);
+}());
