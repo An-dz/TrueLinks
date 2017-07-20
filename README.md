@@ -9,6 +9,8 @@ With TrueLinks those sites will track you less and you'll get to the links much 
 
 TrueLinks is available for the following sites:
 * Facebook
+* Disqus
+* Slack
 * Twitter
  
 ## Installation
