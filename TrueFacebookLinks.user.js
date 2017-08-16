@@ -1,9 +1,9 @@
 // ==UserScript==
 // @author          An_dz
-// @version         1.6
+// @version         1.7
 // @name            TrueFacebookLink
 // @description     Remove the Facebook tracking in links
-// @date            2017 July 11
+// @date            2017 August 16
 // @include         https://*.facebook.com/*
 // @include         http://*.facebook.com/*
 // @run-at          document-start
@@ -54,13 +54,25 @@
 		}
 	}
 
-	function makeTrueLinks() {
-		var links = document.querySelectorAll("a[onmousedown], a[onclick], a[href^='https://l.facebook.com'], a[href^='http://l.facebook.com']");
-		// Can't use forEach because Facebook for some reason breaks it
-		for (var i = links.length - 1; i >= 0; i--) {
-			changeLink(links[i]);
-		}
+	function makeTrueLinks(element) {
+		// we limit to only check links that really have tracking
+		var links = element.querySelectorAll("a[onmousedown], a[onclick], a[href^='https://l.facebook.com'], a[href^='http://l.facebook.com']");
+		links.forEach(function (link) {
+			changeLink(link);
+		});
 	}
 
-	document.addEventListener("DOMNodeInserted", makeTrueLinks, false);
+	// mutation observer is asynchronous, the link will load unchanged for a fraction of miliseconds but this should make the page more responsive
+	var observer = new MutationObserver(function (changes) {
+		changes.forEach(function (chg) {
+			chg.addedNodes.forEach(function (element) {
+				if (element.parentElement !== null) {
+					makeTrueLinks(element.parentElement);
+				}
+			});
+		});
+	});
+
+	// starts the mutation observer
+	observer.observe(document, {childList: true, subtree: true});
 }());
