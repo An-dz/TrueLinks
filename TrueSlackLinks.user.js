@@ -1,9 +1,9 @@
 // ==UserScript==
 // @author          An_dz
-// @version         1.1
+// @version         1.2
 // @name            TrueSlackLink
 // @description     Remove the Slack tracking in links
-// @date            2017 August 16
+// @date            2018 February 22
 // @include         https://*.slack.com/*
 // @run-at          document-start
 // @grant           none
@@ -13,14 +13,17 @@
 
 (function TrueSlackLink() {
 	function makeTrueLinks(element) {
-		var links = element.querySelectorAll("a[onmouseover], a[onclick]");
+		var links = element.querySelectorAll("a[role='link']");
 		links.forEach(function (link) {
-			if (link.hasAttribute("onmouseover")) {
-				link.removeAttribute("onmouseover");
+			var url = link.href.replace("https://slack-redir.net/link?url=", "");
+
+			if (link.href.length === url.length) {
+				return;
 			}
-			if (link.hasAttribute("onclick")) {
-				link.removeAttribute("onclick");
-			}
+
+			link.href = unescape(url);
+			var newLink = link.cloneNode(true);
+			link.parentNode.replaceChild(newLink, link);
 		});
 	}
 
