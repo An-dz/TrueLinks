@@ -1,9 +1,9 @@
 // ==UserScript==
 // @author          An_dz
-// @version         1.3
+// @version         1.4
 // @name            TrueTweetLink
 // @description     Removes the Twitter tracking in tweet links
-// @date            2016 August 16
+// @date            2018 February 22
 // @include         https://*twitter.com/*
 // @include         http://*twitter.com/*
 // @run-at          document-start
@@ -14,7 +14,7 @@
 
 (function TrueTweetLink(){
 	function makeTrueLinks(element) {
-		var links = element.querySelectorAll("a[data-expanded-url], a[data-expanded-path], a[href^='https://t.co'][title^='http']");
+		var links = element.querySelectorAll("a[data-expanded-url], a[data-expanded-path], a[href*='://t.co'][title^='http']");
 		// change links
 		links.forEach( function (link) {
 			// Twitter adds a data- attribute, if it exists we do the changes
