@@ -17,3 +17,7 @@ TrueLinks is available for the following sites:
 You need to install these as UserScripts, so you probably need a browser extension to install them.
 
 You better do a small search on how to install UserScripts into your browser, but basically you install an extension and click on the links above.
+
+## Checking if it's working
+
+Take a look [here](https://github.com/An-dz/TrueLinks/wiki) to see how to be sure TrueLinks is really working.
