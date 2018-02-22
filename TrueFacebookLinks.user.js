@@ -8,6 +8,7 @@
 // @include         http://*.facebook.com/*
 // @run-at          document-start
 // @grant           none
+// @license         MIT
 // @downloadURL     https://github.com/An-dz/TrueLinks/raw/master/TrueFacebookLinks.user.js
 // ==/UserScript==
 

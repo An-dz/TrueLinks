@@ -8,6 +8,7 @@
 // @include         http://*twitter.com/*
 // @run-at          document-start
 // @grant           none
+// @license         MIT
 // @downloadURL     https://github.com/An-dz/TrueLinks/raw/master/TrueTweetLinks.user.js
 // ==/UserScript==
 

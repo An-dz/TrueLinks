@@ -7,6 +7,7 @@
 // @include         https://*.slack.com/*
 // @run-at          document-start
 // @grant           none
+// @license         MIT
 // @downloadURL     https://github.com/An-dz/TrueLinks/raw/master/TrueSlackLinks.user.js
 // ==/UserScript==
 
