@@ -14,7 +14,7 @@ But TrueLinks also comes with specific version for some specific sites to remove
 * [Facebook](https://github.com/An-dz/TrueLinks/raw/master/TrueFacebookLinks.user.js)
 * [Disqus](https://github.com/An-dz/TrueLinks/raw/master/TrueDisqusLinks.user.js)
 * [Slack](https://github.com/An-dz/TrueLinks/raw/master/TrueSlackLinks.user.js)
-* [Twitter](https://github.com/An-dz/TrueLinks/raw/master/TrueTwitterLinks.user.js)
+* [Twitter](https://github.com/An-dz/TrueLinks/raw/master/TrueTweetLinks.user.js)
 
 ## Installation
 You need to install these as UserScripts, so you probably need a browser extension to install them.
