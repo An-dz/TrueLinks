@@ -7,12 +7,15 @@ If you don't want to be tracked TrueLinks will try to remove them making you jum
 
 With TrueLinks those sites will track you less and you'll get to the links much faster as you don't need to download their page first.
 
-TrueLinks is available for the following sites:
+The basic version of TrueLinks affects all sites to remove common tracking strategies:
+* [Generic](https://github.com/An-dz/TrueLinks/raw/master/TrueLinks.user.js)
+
+But TrueLinks also comes with specific version for some specific sites to remove their more complicated trackers:
 * [Facebook](https://github.com/An-dz/TrueLinks/raw/master/TrueFacebookLinks.user.js)
 * [Disqus](https://github.com/An-dz/TrueLinks/raw/master/TrueDisqusLinks.user.js)
 * [Slack](https://github.com/An-dz/TrueLinks/raw/master/TrueSlackLinks.user.js)
 * [Twitter](https://github.com/An-dz/TrueLinks/raw/master/TrueTwitterLinks.user.js)
- 
+
 ## Installation
 You need to install these as UserScripts, so you probably need a browser extension to install them.
 
