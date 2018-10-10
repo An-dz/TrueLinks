@@ -1,9 +1,9 @@
 // ==UserScript==
 // @author          An_dz
-// @version         1.0
+// @version         1.1
 // @name            TrueLink
 // @description     Removes basic tracking strategies on links
-// @date            2018 July 18
+// @date            2018 October 1
 // @include         *
 // @run-at          document-start
 // @grant           none
@@ -16,10 +16,10 @@
 		// only http is checked, other protocols are allowed
 		var links = element.querySelectorAll("a[href^='http'][href*='%3A%2F%2F']");
 		// change links
-		links.forEach( function (link) {
+		links.forEach(function (link) {
 			var match = link.href.match(/https?%3A%2F%2F[^&/]*/);
-			if (!!match) {
-				console.log(match);
+			if (!!match && !(link.href.indexOf("login") < link.href.indexOf("%3A%2F%2F"))) {
+				console.log("TrueLink", match);
 				link.href = unescape(match[0]);
 			}
 		});
