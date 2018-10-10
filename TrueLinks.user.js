@@ -13,7 +13,8 @@
 
 (function TrueTweetLink(){
 	function makeTrueLinks(element) {
-		var links = element.querySelectorAll("a[href*='%3A%2F%2F']");
+		// only http is checked, other protocols are allowed
+		var links = element.querySelectorAll("a[href^='http'][href*='%3A%2F%2F']");
 		// change links
 		links.forEach( function (link) {
 			var match = link.href.match(/https?%3A%2F%2F[^&/]*/);
