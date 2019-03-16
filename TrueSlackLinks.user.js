@@ -1,9 +1,9 @@
 // ==UserScript==
 // @author          An_dz
-// @version         1.2
+// @version         2.0
 // @name            TrueSlackLink
 // @description     Remove the Slack tracking in links
-// @date            2018 February 22
+// @date            2019 March 15
 // @include         https://*.slack.com/*
 // @run-at          document-start
 // @grant           none
@@ -12,28 +12,17 @@
 // ==/UserScript==
 
 (function TrueSlackLink() {
-	function makeTrueLinks(element) {
-		var links = element.querySelectorAll("a[role='link']");
-		links.forEach(function (link) {
-			var url = link.href.replace("https://slack-redir.net/link?url=", "");
-
-			if (link.href.length === url.length) {
-				return;
-			}
-
-			link.href = unescape(url);
-			var newLink = link.cloneNode(true);
-			link.parentNode.replaceChild(newLink, link);
-		});
-	}
-
 	// mutation observer is asynchronous, the link will load unchanged for a fraction of miliseconds but this should make the page more responsive
-	var observer = new MutationObserver(function (changes) {
-		changes.forEach(function (chg) {
-			chg.addedNodes.forEach(function (element) {
-				if (element.parentElement !== null) {
-					makeTrueLinks(element.parentElement);
-				}
+	const observer = new MutationObserver((changes) => {
+		changes.forEach((chg) => {
+			chg.addedNodes.forEach((element) => {
+				const links = element.querySelectorAll("a[target='_blank']:not([data-fixed])");
+
+				links.forEach((link) => {
+					const newLink = link.cloneNode(true);
+					newLink.dataset.fixed = true;
+					link.parentNode.replaceChild(newLink, link);
+				});
 			});
 		});
 	});
