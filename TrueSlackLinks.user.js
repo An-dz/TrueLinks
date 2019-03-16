@@ -1,6 +1,6 @@
 // ==UserScript==
 // @author          An_dz
-// @version         2.0
+// @version         2.1
 // @name            TrueSlackLink
 // @description     Remove the Slack tracking in links
 // @date            2019 March 15
@@ -16,11 +16,17 @@
 	const observer = new MutationObserver((changes) => {
 		changes.forEach((chg) => {
 			chg.addedNodes.forEach((element) => {
-				const links = element.querySelectorAll("a[target='_blank']:not([data-fixed])");
+				// if the added node is not an element, e.g. Text Node
+				if (!element.querySelectorAll) {
+					return;
+				}
+
+				const links = element.querySelectorAll("a[target='_blank'][class='']:not([data-fixed])");
 
 				links.forEach((link) => {
 					const newLink = link.cloneNode(true);
 					newLink.dataset.fixed = true;
+					newLink.href = decodeURIComponent(newLink.href.replace("https://slack-redir.net/link?url=", ""));
 					link.parentNode.replaceChild(newLink, link);
 				});
 			});
