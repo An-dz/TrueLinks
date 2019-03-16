@@ -1,9 +1,9 @@
 // ==UserScript==
 // @author          An_dz
-// @version         1.1
+// @version         1.2
 // @name            TrueDisqusLink
 // @description     Removes the disqus tracking in links
-// @date            2017 August 16
+// @date            2019 March 15
 // @include         https://*disqus.com/*
 // @run-at          document-start
 // @grant           none
@@ -12,22 +12,20 @@
 // ==/UserScript==
 
 (function TrueDisqusLink(){
-	function makeTrueLinks(element) {
-		var links = element.querySelectorAll("a[href^='https://disq.us/url'], a[href^='http://disq.us/url']");
-		// change links
-		links.forEach(function (link) {
-			// Disqus links contain the original link escaped
-			link.href = unescape(link.href.replace(/https?:\/\/disq.us\/url\?url=([^&]+)%3A[^%].*/,"$1"));
-		});
-	}
-
 	// mutation observer is asynchronous, the link will load unchanged for a fraction of miliseconds but this should make the page more responsive
-	var observer = new MutationObserver(function (changes) {
-		changes.forEach(function (chg) {
-			chg.addedNodes.forEach(function (element) {
-				if (element.parentElement !== null) {
-					makeTrueLinks(element.parentElement);
+	const observer = new MutationObserver((changes) => {
+		changes.forEach((chg) => {
+			chg.addedNodes.forEach((element) => {
+				if (!element.querySelectorAll) {
+					return;
 				}
+
+				const links = element.querySelectorAll("a[href^='https://disq.us/url'], a[href^='http://disq.us/url']");
+				// change links
+				links.forEach((link) => {
+					// Disqus links contain the original link escaped
+					link.href = link.title;
+				});
 			});
 		});
 	});
